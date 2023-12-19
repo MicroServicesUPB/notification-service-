@@ -1,21 +1,29 @@
-package com.upb.notification.model;
+package com.upb.notificationservice.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Date;
 
-@Data
 @Entity
-@Table(name = "notifications")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "NOTIFICATIONS")
 public class NotificationEntity {
-
     @Id
-    private String id;
-    private String userId;
-    private String reservationId;
-    private String status;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(name="USER_ID")
+    private Long userId;
+    @Column(name="RESERVATION_ID")
+    private Long reservationId;
+    @Column(name="MESSAGE")
     private String message;
-    private String timestamp;
+    @Column(name="TIMESTAMP")
+    private Date timestamp;
 }
